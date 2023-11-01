@@ -35,8 +35,12 @@ class ListItemScreen extends ConsumerWidget {
                 stateNotifier.getTotalPrice(itemTicket, isCombo: isCombo).first,
             originalPrice:
                 stateNotifier.getTotalPrice(itemTicket, isCombo: isCombo).last,
-            quantityDescription:
-                _getQuantityDescription(context, ref, itemTicket),
+            quantityDescription: _getQuantityDescription(
+              itemTicket,
+              adultQuantity: state.adults,
+              childsQuantity: state.childs,
+              oldersQuantity: state.olders,
+            ),
           );
         },
         separatorBuilder: (_, __) => const SizedBox(height: 12),
@@ -45,11 +49,11 @@ class ListItemScreen extends ConsumerWidget {
   }
 
   String _getQuantityDescription(
-    BuildContext context,
-    WidgetRef ref,
-    Ticket ticket,
-  ) {
-    final state = ref.watch(buyTicketProvider);
+    Ticket ticket, {
+    required int adultQuantity,
+    required int childsQuantity,
+    required int oldersQuantity,
+  }) {
     final isComboTicket =
         (ticket.aTicketComboResponses ?? <Map<String, dynamic>>[]).isNotEmpty;
     final desc = <String>[];
@@ -74,14 +78,14 @@ class ListItemScreen extends ConsumerWidget {
         }
       }
     } else {
-      if (state.adults != 0) {
-        desc.add('${state.adults}  Người lớn');
+      if (adultQuantity != 0) {
+        desc.add('$adultQuantity  Người lớn');
       }
-      if (state.childs != 0) {
-        desc.add('${state.childs} Trẻ em');
+      if (childsQuantity != 0) {
+        desc.add('$childsQuantity Trẻ em');
       }
-      if (state.olders != 0) {
-        desc.add('${state.olders} Người lớn tuổi');
+      if (oldersQuantity != 0) {
+        desc.add('$oldersQuantity Người lớn tuổi');
       }
     }
 

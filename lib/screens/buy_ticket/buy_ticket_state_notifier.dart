@@ -20,7 +20,7 @@ final buyTicketProvider =
 });
 
 class BuyTicketStateNotifier extends StateNotifier<BuyTicketState> {
-  BuyTicketStateNotifier(this.client) : super(BuyTicketState()) {}
+  BuyTicketStateNotifier(this.client) : super(BuyTicketState());
   final http.Client client;
 
   List<Map<String, dynamic>>? listPrice;
@@ -28,37 +28,47 @@ class BuyTicketStateNotifier extends StateNotifier<BuyTicketState> {
   int tsCallApi = 0;
   int soldQuantity = 0;
 
-  Future<void> getListEntries() async {
+  Future<List<EntriesModel>> getListEntries() async {
     state = state.copyWith(
       showLoadingIndicator: true,
     );
     try {
+      final clientCallApi = client;
       final uri = Uri.parse('https://api.publicapis.org/entries');
-      final result = await client.get(uri);
+      final result = await clientCallApi.get(uri);
 
       if (result.statusCode == 200) {
         var jsonResponse =
             convert.jsonDecode(result.body) as Map<String, dynamic>;
+        state = state.copyWith(mapEntries: jsonResponse);
         final entriesResponse = (jsonResponse['entries'] as List<dynamic>?)
             ?.map((e) => EntriesModel.fromMap(Map<String, dynamic>.from(e)))
             .toList();
-
-        state = state.copyWith(listEntriesModel: entriesResponse ?? []);
+        state = state.copyWith(
+          listEntriesModel: entriesResponse ?? [],
+          callApiDone: true,
+          showLoadingIndicator: false,
+        );
+        return entriesResponse ?? [];
       }
       state = state.copyWith(
         showLoadingIndicator: false,
+        isShowError: true,
       );
+      return [];
     } on APIErrors catch (e) {
       state = state.copyWith(
         showLoadingIndicator: false,
+        isShowError: true,
       );
-      return;
+      return [];
     } catch (e) {
       log('$e');
       state = state.copyWith(
         showLoadingIndicator: false,
+        isShowError: true,
       );
-      return;
+      return [];
     }
   }
 

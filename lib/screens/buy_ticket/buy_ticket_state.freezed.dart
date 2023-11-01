@@ -25,9 +25,12 @@ mixin _$BuyTicketState {
   bool get haveChild => throw _privateConstructorUsedError;
   bool get haveSenior => throw _privateConstructorUsedError;
   bool get setShowText => throw _privateConstructorUsedError;
+  bool get callApiDone => throw _privateConstructorUsedError;
+  bool get isShowError => throw _privateConstructorUsedError;
   List<Ticket> get listTicket => throw _privateConstructorUsedError;
   PersonQuatityModel get personQuatity => throw _privateConstructorUsedError;
   int get totalAmount => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get mapEntries => throw _privateConstructorUsedError;
   List<EntriesModel> get listEntriesModel => throw _privateConstructorUsedError;
   bool get showShimmer => throw _privateConstructorUsedError;
   bool get showLoadingIndicator => throw _privateConstructorUsedError;
@@ -53,9 +56,12 @@ abstract class $BuyTicketStateCopyWith<$Res> {
       bool haveChild,
       bool haveSenior,
       bool setShowText,
+      bool callApiDone,
+      bool isShowError,
       List<Ticket> listTicket,
       PersonQuatityModel personQuatity,
       int totalAmount,
+      Map<String, dynamic>? mapEntries,
       List<EntriesModel> listEntriesModel,
       bool showShimmer,
       bool showLoadingIndicator});
@@ -83,9 +89,12 @@ class _$BuyTicketStateCopyWithImpl<$Res, $Val extends BuyTicketState>
     Object? haveChild = null,
     Object? haveSenior = null,
     Object? setShowText = null,
+    Object? callApiDone = null,
+    Object? isShowError = null,
     Object? listTicket = null,
     Object? personQuatity = null,
     Object? totalAmount = null,
+    Object? mapEntries = freezed,
     Object? listEntriesModel = null,
     Object? showShimmer = null,
     Object? showLoadingIndicator = null,
@@ -127,6 +136,14 @@ class _$BuyTicketStateCopyWithImpl<$Res, $Val extends BuyTicketState>
           ? _value.setShowText
           : setShowText // ignore: cast_nullable_to_non_nullable
               as bool,
+      callApiDone: null == callApiDone
+          ? _value.callApiDone
+          : callApiDone // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isShowError: null == isShowError
+          ? _value.isShowError
+          : isShowError // ignore: cast_nullable_to_non_nullable
+              as bool,
       listTicket: null == listTicket
           ? _value.listTicket
           : listTicket // ignore: cast_nullable_to_non_nullable
@@ -139,6 +156,10 @@ class _$BuyTicketStateCopyWithImpl<$Res, $Val extends BuyTicketState>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as int,
+      mapEntries: freezed == mapEntries
+          ? _value.mapEntries
+          : mapEntries // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       listEntriesModel: null == listEntriesModel
           ? _value.listEntriesModel
           : listEntriesModel // ignore: cast_nullable_to_non_nullable
@@ -173,9 +194,12 @@ abstract class _$$_BuyTicketStateCopyWith<$Res>
       bool haveChild,
       bool haveSenior,
       bool setShowText,
+      bool callApiDone,
+      bool isShowError,
       List<Ticket> listTicket,
       PersonQuatityModel personQuatity,
       int totalAmount,
+      Map<String, dynamic>? mapEntries,
       List<EntriesModel> listEntriesModel,
       bool showShimmer,
       bool showLoadingIndicator});
@@ -201,9 +225,12 @@ class __$$_BuyTicketStateCopyWithImpl<$Res>
     Object? haveChild = null,
     Object? haveSenior = null,
     Object? setShowText = null,
+    Object? callApiDone = null,
+    Object? isShowError = null,
     Object? listTicket = null,
     Object? personQuatity = null,
     Object? totalAmount = null,
+    Object? mapEntries = freezed,
     Object? listEntriesModel = null,
     Object? showShimmer = null,
     Object? showLoadingIndicator = null,
@@ -245,6 +272,14 @@ class __$$_BuyTicketStateCopyWithImpl<$Res>
           ? _value.setShowText
           : setShowText // ignore: cast_nullable_to_non_nullable
               as bool,
+      callApiDone: null == callApiDone
+          ? _value.callApiDone
+          : callApiDone // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isShowError: null == isShowError
+          ? _value.isShowError
+          : isShowError // ignore: cast_nullable_to_non_nullable
+              as bool,
       listTicket: null == listTicket
           ? _value._listTicket
           : listTicket // ignore: cast_nullable_to_non_nullable
@@ -257,6 +292,10 @@ class __$$_BuyTicketStateCopyWithImpl<$Res>
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
               as int,
+      mapEntries: freezed == mapEntries
+          ? _value._mapEntries
+          : mapEntries // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       listEntriesModel: null == listEntriesModel
           ? _value._listEntriesModel
           : listEntriesModel // ignore: cast_nullable_to_non_nullable
@@ -286,14 +325,18 @@ class _$_BuyTicketState implements _BuyTicketState {
       this.haveChild = true,
       this.haveSenior = true,
       this.setShowText = false,
+      this.callApiDone = false,
+      this.isShowError = false,
       final List<Ticket> listTicket = const <Ticket>[],
       this.personQuatity =
           const PersonQuatityModel(adults: 2, childs: 0, olders: 0),
       this.totalAmount = 2,
+      final Map<String, dynamic>? mapEntries,
       final List<EntriesModel> listEntriesModel = const <EntriesModel>[],
       this.showShimmer = false,
       this.showLoadingIndicator = false})
       : _listTicket = listTicket,
+        _mapEntries = mapEntries,
         _listEntriesModel = listEntriesModel;
 
   @override
@@ -323,6 +366,12 @@ class _$_BuyTicketState implements _BuyTicketState {
   @override
   @JsonKey()
   final bool setShowText;
+  @override
+  @JsonKey()
+  final bool callApiDone;
+  @override
+  @JsonKey()
+  final bool isShowError;
   final List<Ticket> _listTicket;
   @override
   @JsonKey()
@@ -338,6 +387,16 @@ class _$_BuyTicketState implements _BuyTicketState {
   @override
   @JsonKey()
   final int totalAmount;
+  final Map<String, dynamic>? _mapEntries;
+  @override
+  Map<String, dynamic>? get mapEntries {
+    final value = _mapEntries;
+    if (value == null) return null;
+    if (_mapEntries is EqualUnmodifiableMapView) return _mapEntries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   final List<EntriesModel> _listEntriesModel;
   @override
   @JsonKey()
@@ -357,7 +416,7 @@ class _$_BuyTicketState implements _BuyTicketState {
 
   @override
   String toString() {
-    return 'BuyTicketState(enableButton: $enableButton, cartItemCount: $cartItemCount, adults: $adults, childs: $childs, olders: $olders, haveAdult: $haveAdult, haveChild: $haveChild, haveSenior: $haveSenior, setShowText: $setShowText, listTicket: $listTicket, personQuatity: $personQuatity, totalAmount: $totalAmount, listEntriesModel: $listEntriesModel, showShimmer: $showShimmer, showLoadingIndicator: $showLoadingIndicator)';
+    return 'BuyTicketState(enableButton: $enableButton, cartItemCount: $cartItemCount, adults: $adults, childs: $childs, olders: $olders, haveAdult: $haveAdult, haveChild: $haveChild, haveSenior: $haveSenior, setShowText: $setShowText, callApiDone: $callApiDone, isShowError: $isShowError, listTicket: $listTicket, personQuatity: $personQuatity, totalAmount: $totalAmount, mapEntries: $mapEntries, listEntriesModel: $listEntriesModel, showShimmer: $showShimmer, showLoadingIndicator: $showLoadingIndicator)';
   }
 
   @override
@@ -380,12 +439,18 @@ class _$_BuyTicketState implements _BuyTicketState {
                 other.haveSenior == haveSenior) &&
             (identical(other.setShowText, setShowText) ||
                 other.setShowText == setShowText) &&
+            (identical(other.callApiDone, callApiDone) ||
+                other.callApiDone == callApiDone) &&
+            (identical(other.isShowError, isShowError) ||
+                other.isShowError == isShowError) &&
             const DeepCollectionEquality()
                 .equals(other._listTicket, _listTicket) &&
             (identical(other.personQuatity, personQuatity) ||
                 other.personQuatity == personQuatity) &&
             (identical(other.totalAmount, totalAmount) ||
                 other.totalAmount == totalAmount) &&
+            const DeepCollectionEquality()
+                .equals(other._mapEntries, _mapEntries) &&
             const DeepCollectionEquality()
                 .equals(other._listEntriesModel, _listEntriesModel) &&
             (identical(other.showShimmer, showShimmer) ||
@@ -406,9 +471,12 @@ class _$_BuyTicketState implements _BuyTicketState {
       haveChild,
       haveSenior,
       setShowText,
+      callApiDone,
+      isShowError,
       const DeepCollectionEquality().hash(_listTicket),
       personQuatity,
       totalAmount,
+      const DeepCollectionEquality().hash(_mapEntries),
       const DeepCollectionEquality().hash(_listEntriesModel),
       showShimmer,
       showLoadingIndicator);
@@ -431,9 +499,12 @@ abstract class _BuyTicketState implements BuyTicketState {
       final bool haveChild,
       final bool haveSenior,
       final bool setShowText,
+      final bool callApiDone,
+      final bool isShowError,
       final List<Ticket> listTicket,
       final PersonQuatityModel personQuatity,
       final int totalAmount,
+      final Map<String, dynamic>? mapEntries,
       final List<EntriesModel> listEntriesModel,
       final bool showShimmer,
       final bool showLoadingIndicator}) = _$_BuyTicketState;
@@ -457,11 +528,17 @@ abstract class _BuyTicketState implements BuyTicketState {
   @override
   bool get setShowText;
   @override
+  bool get callApiDone;
+  @override
+  bool get isShowError;
+  @override
   List<Ticket> get listTicket;
   @override
   PersonQuatityModel get personQuatity;
   @override
   int get totalAmount;
+  @override
+  Map<String, dynamic>? get mapEntries;
   @override
   List<EntriesModel> get listEntriesModel;
   @override

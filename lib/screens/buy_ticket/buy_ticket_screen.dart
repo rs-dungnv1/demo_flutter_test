@@ -37,7 +37,7 @@ class BuyTicketScreen extends ConsumerWidget {
             ),
           ),
           state.showLoadingIndicator
-              ? const CircularProgressIndicator()
+              ? const Center(child: CircularProgressIndicator())
               : const SizedBox.shrink(),
         ],
       ),
@@ -113,7 +113,6 @@ class _BodyState extends ConsumerState<_Body> {
             ItemEntries(
               entriesModel: state.listEntriesModel[0],
             ),
-          if (state.setShowText) const Text('1'),
         ],
       ),
     );

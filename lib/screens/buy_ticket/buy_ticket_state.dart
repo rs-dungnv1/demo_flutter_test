@@ -17,10 +17,13 @@ class BuyTicketState with _$BuyTicketState {
     @Default(true) bool haveChild,
     @Default(true) bool haveSenior,
     @Default(false) bool setShowText,
+    @Default(false) bool callApiDone,
+    @Default(false) bool isShowError,
     @Default(<Ticket>[]) List<Ticket> listTicket,
     @Default(PersonQuatityModel(adults: 2, childs: 0, olders: 0))
         PersonQuatityModel personQuatity,
     @Default(2) int totalAmount,
+    Map<String, dynamic>? mapEntries,
     @Default(<EntriesModel>[]) List<EntriesModel> listEntriesModel,
     @Default(false) bool showShimmer,
     @Default(false) bool showLoadingIndicator,
